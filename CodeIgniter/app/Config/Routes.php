@@ -19,7 +19,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -34,6 +34,9 @@ $routes->get('/', 'Home::index');
 use App\Controllers\Pages;
 
 $routes->get('pages', [Pages::class, 'index']);
+$routes->get('auth/register', 'Auth::register');
+$routes->post('auth/save', 'Auth::save');
+$routes->get('auth', 'Auth::index');
 $routes->get('(:segment)', [Pages::class, 'view']);
 
 

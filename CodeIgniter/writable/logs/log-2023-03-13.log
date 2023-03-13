@@ -1,0 +1,22 @@
+CRITICAL - 2023-03-13 06:26:10 --> Undefined property: App\Controllers\Auth::$load
+in APPPATH/Controllers/Auth.php on line 9.
+ 1 APPPATH/Controllers/Auth.php(9): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Auth->index()
+ 3 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-03-13 19:24:10 --> REDIRECTED ROUTE at /home
+INFO - 2023-03-13 19:24:57 --> REDIRECTED ROUTE at /auth
+INFO - 2023-03-13 19:26:48 --> REDIRECTED ROUTE at /auth
+INFO - 2023-03-13 19:27:42 --> REDIRECTED ROUTE at /auth
+INFO - 2023-03-13 19:27:45 --> REDIRECTED ROUTE at /auth
+CRITICAL - 2023-03-13 19:44:12 --> syntax error, unexpected 'echo' (T_ECHO), expecting ';'
+in APPPATH/Controllers/Auth.php on line 17.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile()
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace()
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass()
+ 4 [internal function]: spl_autoload_call()
+ 5 SYSTEMPATH/CodeIgniter.php(892): class_exists()
+ 6 SYSTEMPATH/CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
