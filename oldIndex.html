@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        
+        <style>
+        </style>
+
+	<div class="header">
+        	<h1>Malawi Gradebook</h1>
+	</div>
+    </head>
+
+    <body>
+      <div class="loginForm" id="myForm">
+  	<form action="login.php" class="form-container" method="post">
+    		<h1>Login</h1>
+
+    		<label for="username"><b>Username</b></label>
+    		<input type="text" placeholder="Enter Username" name="username" required>
+
+    		<label for="psw"><b>Password</b></label>
+    		<input type="password" placeholder="Enter Password" name="psw" required>
+
+    		<button type="button" class="btn" onclick="clearLogin()">Login</button>
+  	</form>
+       </div>	
+      <div class="mainBody">
+
+	<div class = "settings">
+      	<div class="searchbar">
+        	<textarea name="search" id="searchbar" cols="100" rows="1"></textarea>
+      	</div>
+        
+        <div class="filter"> 
+          	<div class="sort">
+            		<button class="filter_btn">Filter</button>
+            		<div class="dropdown-content">
+              			<a href="main_menu.html">Name</a>
+              			<a href="#">Class</a>
+            		</div>
+
+            
+
+           
+          	</div>
+
+          	<div class="sort">
+            		<button class="filter_btn">Sort</button>
+            		<div class="dropdown-content">
+              			<a href="#">Newest</a>
+              			<a href="#">Oldest</a> 
+            		</div>
+          	</div>
+
+        </div>
+	</div>
+        	<div class="grades">
+			<!-- till we get picture in folder <img src="Gradesheet.png" alt=""> -->
+
+        	</div>
+        
+      </div>  
+
+      <!-- temporary functions for code--> 
+	<script>
+		function clearLogin(){
+			document.getElementById("myForm").style.display = "none";
+			document.querySelectorAll(".mainBody").forEach(a=>a.style.filter = "none");
+		}
+	</script>
+    </body>
+
+
+
+
+    </html>

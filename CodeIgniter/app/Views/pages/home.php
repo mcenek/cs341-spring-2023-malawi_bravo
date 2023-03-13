@@ -1,0 +1,1 @@
+This is some text in the home.php file and it has not dissappeared
