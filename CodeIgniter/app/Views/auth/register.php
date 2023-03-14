@@ -13,21 +13,26 @@
             <div class = "col-md-4 col-md-offset-4">
                 <h4>Sign Up</h4><hr>
                 <form action="<?= base_url("auth/save") ?>" method="post">
+                <?= csrf_field(); ?>
                 <div class="form-group">
                         <label for="">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter full name">
+                        <input type="text" class="form-control" name="name" placeholder="Enter full name" value="<?= set_value("name"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "name") : '' ?></span>
                     </div>
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Enter your email">
+                        <input type="text" class="form-control" name="email" placeholder="Enter your email" value="<?= set_value("email"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "email") : '' ?></span>
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="Enter password">
+                        <input type="text" class="form-control" name="password" placeholder="Enter password" value="<?= set_value("password"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "password") : '' ?></span>
                     </div>
                     <div class="form-group">
                         <label for="">Confirm Password</label>
-                        <input type="text" class="form-control" name="cpassword" placeholder="Enter confirm password">
+                        <input type="text" class="form-control" name="cpassword" placeholder="Enter confirm password" value="<?= set_value("cpassword"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "cpassword") : '' ?></span>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
