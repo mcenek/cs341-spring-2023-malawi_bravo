@@ -12,8 +12,14 @@
         <div class = "row justify-content-center" style="margin-top:45px">
             <div class = "col-md-4 col-md-offset-4">
                 <h4>Sign Up</h4><hr>
-                <form action="<?= base_url("auth/save") ?>" method="post">
+                <form action="<?= base_url("auth/save") ?>" method="post" autocompete="off">
                 <?= csrf_field(); ?>
+                <?php if(!empty(session()->getFlashdata('fail'))) : ?>
+                    <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+                <?php endif ?>
+                <?php if(!empty(session()->getFlashdata('success'))) : ?>
+                    <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+                <?php endif ?>
                 <div class="form-group">
                         <label for="">Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Enter full name" value="<?= set_value("name"); ?>">
@@ -26,12 +32,12 @@
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="Enter password" value="<?= set_value("password"); ?>">
+                        <input type="password" class="form-control" name="password" placeholder="Enter password" value="<?= set_value("password"); ?>">
                         <span class ="text-danger"><?= isset($validation) ? display_error($validation, "password") : '' ?></span>
                     </div>
                     <div class="form-group">
                         <label for="">Confirm Password</label>
-                        <input type="text" class="form-control" name="cpassword" placeholder="Enter confirm password" value="<?= set_value("cpassword"); ?>">
+                        <input type="password" class="form-control" name="cpassword" placeholder="Enter confirm password" value="<?= set_value("cpassword"); ?>">
                         <span class ="text-danger"><?= isset($validation) ? display_error($validation, "cpassword") : '' ?></span>
                     </div>
                     <div class="form-group">

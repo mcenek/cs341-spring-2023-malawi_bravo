@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Libraries\Hash;
 class Auth extends BaseController
 {
 
@@ -37,7 +38,7 @@ class Auth extends BaseController
             $values = [
                 'name' =>$name,
                 'email'=>$email,
-                'password'=>$password,
+                'password'=>Hash::make($password),
             ];
 
             $usersModel = new \App\Models\UsersModel();
@@ -46,8 +47,58 @@ class Auth extends BaseController
                 return redirect()->back()->with('fail', 'Something went wrong');
                 //return redirect()->to('auth/register')->with('fail', 'Something went wrong');
             } else {
-                return redirect()->to('auth')->with('success', 'You are now registered successfully');
+                //return redirect()->to('auth/register')->with('success', 'You are now registered successfully');
+                $last_id = $usersModel->insertID();
+                session()->set('loggedUser', $last_id);
+                return redirect()->to('/dashboard');
             }
+        }
+    }
+
+    function check() {
+        $validation = $this->validate([
+            'email' => [
+                'rules'  => 'required|valid_email|is_not_unique[users.email]',
+                'errors' => [
+                    'required' => 'Email is required.',
+                    'valid_email' => 'Please check the Email field. It does not appear to be valid.',
+                    'is_not_unique' => 'Email not registered in our server.',
+                ],
+            ],
+            'password' => [
+                'rules'  => 'required|min_length[5]|max_length[20]',
+                'errors' => [
+                    'required' => 'Password is required.',
+                    'min_length' => 'Password must have atleast 5 characters in length.',
+                    'max_length' => 'Password must not have characters more thant 20 in length.',
+                ],
+            ],
+        ]);
+
+        if(!$validation){
+            return view('auth/login',['validation'=>$this->validator]);
+        } else {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+            $usersModel = new \App\Models\UsersModel();
+            $user_info = $usersModel->where('email', $email)->first();
+            $check_password = Hash::check($password, $user_info['password']);
+            
+            if( !$check_password ){
+                session()->setFlashdata('fail', 'Incorrect password');
+                return redirect()->to('auth')->withInput();
+            }else{
+                $user_id = $user_info['id'];
+                session()->set('loggedUser', $user_id);
+                return  redirect()->to('/dashboard');
+
+            }
+        }
+    }
+    function logout() {
+        if(session()->has('loggedUser')) {
+            session()->remove('loggedUser');
+            return redirect()->to('/auth?access=out')->with('fail', 'You are logged out!');
         }
     }
 }
