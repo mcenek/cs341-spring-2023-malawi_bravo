@@ -29,7 +29,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+
 
 use App\Controllers\Pages;
 
@@ -38,17 +38,14 @@ $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/dashboard', 'Dashboard::index');
     $routes->get('/dashboard/profile', 'Dashboard::profile');
 });
-
 $routes->group('', ['filter'=>'AlreadyLoggedIn'], function($routes){
     $routes->get('auth/register', 'Auth::register');
     $routes->get('auth', 'Auth::index');
+    $routes->get('/', 'Auth::index');
 });
-
 $routes->get('auth/logout', 'Auth::logout');
 $routes->post('auth/check', 'Auth::check');
 $routes->post('auth/save', 'Auth::save');
-
-
 $routes->get('(:segment)', [Pages::class, 'view']);
 
 
