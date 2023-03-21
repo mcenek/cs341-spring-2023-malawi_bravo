@@ -3,9 +3,9 @@
 use CodeIgniter\Model;
 
 class StudentModel extends Model {
-    protected $table = '';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'email', 'password'];
+    protected $table = 'Student';
+    protected $primaryKey = 'StudentID';
+    protected $allowedFields = ['StudentID', 'ClassStanding', 'FirstName', 'LastName'];
 }
 
 ?> 
