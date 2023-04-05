@@ -16,7 +16,8 @@
                         </div>
                     </div>
                 </form>
-
+            </div>
+                <br>
                 <table id="results">
                     <thead>
 
@@ -33,8 +34,6 @@
                     </tbody>
                 </table>
             </div>
-            
-        </div>
     </div>
 
 </body>

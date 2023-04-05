@@ -30,10 +30,14 @@
                 </table>
                 <div class="d-flex flex-column align-items-center mb-3">
                     <div class="w-100 mb-2">
-                        <button type="button" class="btn btn-primary mb-2">Add Student</button>
+                        <a href="<?= site_url('addStudent'); ?>">
+                            <button type="button" class="btn btn-primary mb-2">Add Student</button>
+                        </a>
                     </div>
                     <div class="w-100 mb-2">
-                    <button type="button" class="btn btn-primary mb-2">Add Class</button>
+                        <a href="<?= site_url('addClass'); ?>">
+                            <button type="button" class="btn btn-primary mb-2">Add Class</button>
+                        </a>
                     </div>
                     <div class="w-100 mb-2">
                     <button type="button" class="btn btn-primary mb-2">Print Report Cards</button>

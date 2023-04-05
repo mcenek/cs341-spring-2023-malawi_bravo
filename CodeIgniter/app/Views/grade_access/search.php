@@ -12,14 +12,22 @@
                 <h4 class="text-center">EDIT GRADES</h4>
                 <form action="<?= base_url('SearchController/search')?>" method="post" autocomplete="off">
                     <div class="d-flex justify-content-center mb-3">
-                        <input type="text" id="query" class="form-control" placeholder="Search">
+                        <input type="text" id="query" name='query' class="form-control" placeholder="Search">
                         </div>
                     </div>
                 </form>
-
+            </div>
+        </div>
+        <div class="row justify-content-center" style="margin-top:45px">
                 <table id="results">
                     <thead>
-
+                        <?php if($result): ?>
+                            <tr>
+                                <th>Class Name</th>
+                                <th>Class ID</th>
+                                <th>Edit</th>
+                            </tr>
+                        <?php endif; ?>
                     </thead>
                     <tbody>
                         <?php if($result): ?>
@@ -27,15 +35,13 @@
                             <tr>
                                 <td><?php echo $row['ClassName']; ?></td>
                                 <td><?php echo $row['ClassID']; ?></td>
-                                <td><button>Edit</button></td>
+                                <td><button id="<?= $row['ClassID']?>">Edit</button></td>
                             </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
                 </table>
-            </div>   
+            </div> 
         </div>
-    </div>
-
 </body>
 </html>

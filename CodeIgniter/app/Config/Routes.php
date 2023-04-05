@@ -40,6 +40,10 @@ $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/dashboard/profile', 'Dashboard::profile');
     $routes->get('/transcript', 'Transcript::result');
     $routes->get('/transcript/temp', 'Transcript::temp');
+    $routes->get('/addClass', 'AddClass::index');
+    $routes->get('/addStudent', 'AddStudent::index');
+    $routes->post('/addClass/add', 'AddClass::save');
+    $routes->post('/addStudent/add', 'AddStudent::save');
 });
 $routes->group('', ['filter'=>'AlreadyLoggedIn'], function($routes){
     $routes->get('auth/register', 'Auth::register');
@@ -50,6 +54,7 @@ $routes->get('auth/logout', 'Auth::logout');
 $routes->post('auth/check', 'Auth::check');
 $routes->post('auth/save', 'Auth::save');
 $routes->get('(:segment)', [Pages::class, 'view']);
+$routes->post('SearchController/search', 'SearchController::search');
 
 
 /*
