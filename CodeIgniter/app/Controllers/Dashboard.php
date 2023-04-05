@@ -13,6 +13,8 @@ class Dashboard extends BaseController
             'title' => 'Dashboard',
             'userInfo' => $userInfo
         ];
+
+        
         return view('dashboard/index', $data);
     }
 
@@ -25,5 +27,5 @@ class Dashboard extends BaseController
             'userInfo' => $userInfo
         ];
         return view('dashboard/profile', $data);
-    }
+    } 
 }

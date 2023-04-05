@@ -56,6 +56,21 @@ class Auth extends BaseController
     }
 
     function check() {
+        // Check if there's a lockout timestamp in the session.
+    $lockout_timestamp = session()->get('lockout_timestamp');
+    
+    if ($lockout_timestamp) {
+        // Calculate the time difference between now and the lockout timestamp.
+        $time_difference = time() - $lockout_timestamp;
+
+        // If it's been less than 30 seconds, show an error message and exit.
+        if ($time_difference < 30) {
+            $remaining_time = 30 - $time_difference;
+            session()->setFlashdata('fail', "You are temporarily locked out. Please wait 30 seconds before trying again.");
+            return redirect()->to('auth');
+        }
+    }
+    
         $validation = $this->validate([
             'email' => [
                 'rules'  => 'required|valid_email|is_not_unique[users.email]',
@@ -75,6 +90,19 @@ class Auth extends BaseController
             ],
         ]);
 
+
+    // If the user fails authentication, increment the failed login attempts count.
+    $failed_attempts = session()->get('failed_attempts', 0) + 1;
+
+    // If the user has reached 3 failed attempts, set the lockout timestamp and reset the failed attempts count.
+    if ($failed_attempts >= 3) {
+        session()->set('lockout_timestamp', time());
+        $failed_attempts = 0;
+    }
+
+    // Update the failed attempts count in the session.
+    session()->set('failed_attempts', $failed_attempts);
+
         if(!$validation){
             return view('auth/login',['validation'=>$this->validator]);
         } else {
@@ -90,6 +118,10 @@ class Auth extends BaseController
             }else{
                 $user_id = $user_info['id'];
                 session()->set('loggedUser', $user_id);
+
+                session()->remove('failed_attempts');
+                session()->remove('lockout_timestamp');
+
                 return  redirect()->to('/dashboard');
 
             }

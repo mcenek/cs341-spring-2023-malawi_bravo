@@ -36,7 +36,10 @@ use App\Controllers\Pages;
 $routes->get('pages', [Pages::class, 'index']);
 $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/dashboard', 'Dashboard::index');
+    $routes->get('/search', 'SearchController::index');
     $routes->get('/dashboard/profile', 'Dashboard::profile');
+    $routes->get('/transcript', 'Transcript::result');
+    $routes->get('/transcript/temp', 'Transcript::temp');
 });
 $routes->group('', ['filter'=>'AlreadyLoggedIn'], function($routes){
     $routes->get('auth/register', 'Auth::register');

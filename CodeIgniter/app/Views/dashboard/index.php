@@ -8,44 +8,54 @@
     <link rel="stylesheet" href="<?= base_url("bootstrap/css/bootstrap.css") ?>">
 </head>
 <body>
-    <div class = "container">
-        <div class = "row justify-content-center" style="margin-top:45px">
-            <div class="col-md-4 col-md-offset-4">
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top:45px">
+            <div class="col-12 col-md-8">
                 <h4><?= $title; ?></h4>
                 <table class="table table-hover">
-                    <thread>
+                    <thead>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
                             <th></th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
                         <tr>
                             <td><?= ucfirst($userInfo['name']); ?></td>
                             <td><?= $userInfo['email']; ?></td>
-                            <td><a href="<?= site_url('auth/logout'); ?>">Logout</td>
+                            <td><a href="<?= site_url('auth/logout'); ?>">Logout</a></td>
                         </tr>
                     </tbody>
                 </table>
-		<form>
-		    <div class="form-inline">
-			<div class="input-group"> 
-				<label for="searchByGroup" class="input-group-text">Search By: </label>
-				<select class="form-select" id="searchByGroup">
-					<option selected value="Student Name">Student Name</option>
-					<option value="Class">Class</option>
-				</select>
-			</div>
-			<div class="form-group" style="margin-top:10px" >
-				<input type="text" id="SearchBar" class="form-control" placeholder="Search"></input>	
-				<button type="submit" class="btn btn-primary">Search</button>		
-			
-			</div>
-		    </div>
-		</form>
+                <div class="d-flex flex-column align-items-center mb-3">
+                    <div class="w-100 mb-2">
+                        <button type="button" class="btn btn-primary mb-2">Add Student</button>
+                    </div>
+                    <div class="w-100 mb-2">
+                    <button type="button" class="btn btn-primary mb-2">Add Class</button>
+                    </div>
+                    <div class="w-100 mb-2">
+                    <button type="button" class="btn btn-primary mb-2">Print Report Cards</button>
+                    </div>
+                    <div class="w-100 mb-2">
+                    <a href="<?= site_url('search'); ?>">
+                        <button type="button" class="btn btn-primary mx-2">Edit Grades</button>
+                    </a>
+                    </div>
+                    <div class="w-100 mb-2">
+                    <button type="button" class="btn btn-primary mb-2">Assign Students</button>
+                    </div>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>  
+    </div>
 </body>
 </html>
