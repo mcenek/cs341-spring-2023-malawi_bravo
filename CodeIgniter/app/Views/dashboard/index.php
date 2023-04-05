@@ -28,6 +28,22 @@
                         </tr>
                     </tbody>
                 </table>
+		<form>
+		    <div class="form-inline">
+			<div class="input-group"> 
+				<label for="searchByGroup" class="input-group-text">Search By: </label>
+				<select class="form-select" id="searchByGroup">
+					<option selected value="Student Name">Student Name</option>
+					<option value="Class">Class</option>
+				</select>
+			</div>
+			<div class="form-group" style="margin-top:10px" >
+				<input type="text" id="SearchBar" class="form-control" placeholder="Search"></input>	
+				<button type="submit" class="btn btn-primary">Search</button>		
+			
+			</div>
+		    </div>
+		</form>
             </div>
         </div>
     </div>  

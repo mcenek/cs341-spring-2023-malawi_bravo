@@ -662,3 +662,4 @@ in APPPATH/Models/UsersModel.php on line 5.
  9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
 INFO - 2023-03-14 07:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-03-14 07:58:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-14 19:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

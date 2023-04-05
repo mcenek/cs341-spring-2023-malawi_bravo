@@ -26,8 +26,13 @@
                             <td><?= $userInfo['email']; ?></td>
                             <td><a href="<?= site_url('auth/logout'); ?>">Logout</td>
                         </tr>
-                    </tbody>
-                </table>
+		    </tbody>
+		</table>
+		<label class="input-group-text" for="searchByGroup">Select By<\label>
+		<select class="form-select" id="searchByGroup"> 
+			<option value="Name">Name</option>
+			<option value="Class">Class</option>
+		</select>		
             </div>
         </div>
     </div>  

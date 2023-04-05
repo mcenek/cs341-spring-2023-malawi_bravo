@@ -3,8 +3,9 @@
 use CodeIgniter\Model;
 
 class SSModel extends Model {
-    protected $table = 'SemesterSchedule';
+    protected $table = 'Semester_Schedule';
     protected $primaryKey = 'ScheduleID';
+    protected $useAutoIncrement = false;
     protected $allowedFields = ['TranscriptID'];
 }
 

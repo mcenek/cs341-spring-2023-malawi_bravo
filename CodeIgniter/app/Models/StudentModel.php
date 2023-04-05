@@ -5,7 +5,8 @@ use CodeIgniter\Model;
 class StudentModel extends Model {
     protected $table = 'Student';
     protected $primaryKey = 'StudentID';
-    protected $allowedFields = ['StudentID', 'ClassStanding', 'FirstName', 'LastName'];
+    protected $useAutoIncrement = false;
+    protected $allowedFields = ['ClassStanding', 'FirstName', 'LastName'];
 }
 
 ?> 
