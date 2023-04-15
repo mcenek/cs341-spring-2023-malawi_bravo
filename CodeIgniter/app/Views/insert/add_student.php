@@ -36,6 +36,21 @@
                         <span class ="text-danger"><?= isset($validation) ? display_error($validation, "studentid") : '' ?></span>
                     </div>
                     <div class="form-group">
+                        <label for="">Date of Birth</label>
+                        <input type="text" class="form-control" name="dob" placeholder="Date of Birth (YYYY-MM-DD)" value="<?= set_value("dob"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "dob") : '' ?></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Name of Emergency Contact</label>
+                        <input type="text" class="form-control" name="fcontact" placeholder="Name of Emergency Contact" value="<?= set_value("fcontact"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "fcontact") : '' ?></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email of Emergency Contact</label>
+                        <input type="text" class="form-control" name="faddress" placeholder="Email of Emergency Contact" value="<?= set_value("faddress"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "faddress") : '' ?></span>
+                    </div>
+                    <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Add Student</button>
                     </div>
                     <a href="<?= base_url("dashboard") ?>">Return to dashboard</a>

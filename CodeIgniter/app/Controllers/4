@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Controllers;
+
+class AssignClass extends BaseController {
+	public function index(){
+		$studentModel = new \App\Models\StudentModel();
+		$data['result'] = $studentModel->findAll();
+		return view('class_assign/studentSearch', $data);
+	}
+
+}
+

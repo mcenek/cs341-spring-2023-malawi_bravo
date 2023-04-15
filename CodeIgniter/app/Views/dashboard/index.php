@@ -43,11 +43,12 @@
                     <button type="button" class="btn btn-primary mb-2">Print Report Cards</button>
                     </div>
                     <div class="w-100 mb-2">
-                    <a href="<?= site_url('search'); ?>">
-                        <button type="button" class="btn btn-primary mx-2">Edit Grades</button>
+                    <a href="<?= site_url('editGrades'); ?>">
+                        <button type="button" class="btn btn-primary mb-2">Edit Grades</button>
                     </a>
                     </div>
-                    <div class="w-100 mb-2">
+		    <div class="w-100 mb-2">
+		    <a href="<?=site_url('assignStudents'); ?>">
                     <button type="button" class="btn btn-primary mb-2">Assign Students</button>
                     </div>
                 </div>

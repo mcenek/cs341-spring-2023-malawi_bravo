@@ -11,15 +11,14 @@ class AddStudent extends BaseController {
         return view('insert/add_student');
     }
 
-    public function register() {
-        return view('auth/register');
-    }
-
     public function save() {
         $validation = $this->validate([
             'fname' => 'required',
             'lname' => 'required',
-            'studentid' => 'required|min_length[1]|max_length[20]|is_unique[Student.StudentID]',
+            'studentid' => 'required|max_length[20]|is_unique[Student.StudentID]',
+            'dob' => 'required|valid_date',
+            'fcontact' => 'required',
+            'faddress' => 'required|valid_email',
         ]);
 
         if (!$validation) {
@@ -29,11 +28,17 @@ class AddStudent extends BaseController {
             $fname = $this->request->getPost('fname');
             $lname = $this->request->getPost('lname');
             $studentid = $this->request->getPost('studentid');
+            $dob = $this->request->getPost('dob');
+            $fcontact = $this->request->getPost('fcontact');
+            $faddress = $this->request->getPost('faddress');
             
             $values = [
                 'FirstName' => $fname,
                 'LastName' => $lname,
                 'StudentID' => $studentid,
+                'DOB' => $dob,
+                'FamilyContact' => $fcontact,
+                'FamilyAddress' => $faddress,
             ];
 
             $studentModel = new \App\Models\StudentModel();
@@ -44,7 +49,7 @@ class AddStudent extends BaseController {
             }
             else {
                 //$builder->insert($values);
-                return redirect()->to('/dashboard')->with('success', 'Student has successfully been added.');
+                return redirect()->back()->with('success', 'Student has successfully been added.');
             }
         }
     }

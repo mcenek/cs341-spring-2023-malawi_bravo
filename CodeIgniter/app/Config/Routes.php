@@ -36,7 +36,7 @@ use App\Controllers\Pages;
 $routes->get('pages', [Pages::class, 'index']);
 $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/dashboard', 'Dashboard::index');
-    $routes->get('/search', 'SearchController::index');
+    $routes->get('/editGrades', 'SearchController::index');
     $routes->get('/dashboard/profile', 'Dashboard::profile');
     $routes->get('/transcript', 'Transcript::result');
     $routes->get('/transcript/temp', 'Transcript::temp');
@@ -44,6 +44,10 @@ $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/addStudent', 'AddStudent::index');
     $routes->post('/addClass/add', 'AddClass::save');
     $routes->post('/addStudent/add', 'AddStudent::save');
+    $routes->get('/assignStudents', 'AssignStudent::index');
+    $routes->post('/assignClass/classSelected', 'AssignClass::index');
+    $routes->post('/assignStudents/search', 'AssignStudent::search');
+    $routes->post('/search/results', 'GradeController::index');
 });
 $routes->group('', ['filter'=>'AlreadyLoggedIn'], function($routes){
     $routes->get('auth/register', 'Auth::register');
@@ -73,3 +77,4 @@ $routes->post('SearchController/search', 'SearchController::search');
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+

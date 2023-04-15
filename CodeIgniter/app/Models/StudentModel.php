@@ -6,7 +6,7 @@ class StudentModel extends Model {
     protected $table = 'Student';
     protected $primaryKey = 'StudentID';
     protected $useAutoIncrement = false;
-    protected $allowedFields = ['ClassStanding', 'FirstName', 'LastName'];
+    protected $allowedFields = ['ClassStanding', 'FirstName', 'LastName', 'DOB', 'FamilyContact', 'FamilyAddress'];
 }
 
 ?> 

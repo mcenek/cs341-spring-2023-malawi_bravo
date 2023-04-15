@@ -11,7 +11,7 @@
     <div class = "container" >
         <div class = "row justify-content-center" style="margin-top:45px">
             <div class = "col-md-4 col-md-offset-4">
-                <h4>Add a new student</h4><hr>
+                <h4>Add a new class</h4><hr>
                 <form action="<?= base_url("addClass/add") ?>" method="post" autocompete="off">
                 <?= csrf_field(); ?>
                 <?php if(!empty(session()->getFlashdata('fail'))) : ?>
@@ -22,13 +22,13 @@
                 <?php endif ?>
                 <div class="form-group">
                         <label for="">Class Name</label>
-                        <input type="text" class="form-control" name="fname" placeholder="First Name" value="<?= set_value("name"); ?>">
-                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "name") : '' ?></span>
+                        <input type="text" class="form-control" name="cname" placeholder="Class Name" value="<?= set_value("classname"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "cname") : '' ?></span>
                     </div>
                     <div class="form-group">
                         <label for="">Class ID</label>
-                        <input type="text" class="form-control" name="password" placeholder="Class ID" value="<?= set_value("password"); ?>">
-                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "password") : '' ?></span>
+                        <input type="text" class="form-control" name="classid" placeholder="Class ID" value="<?= set_value("classid"); ?>">
+                        <span class ="text-danger"><?= isset($validation) ? display_error($validation, "classid") : '' ?></span>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Add Class</button>

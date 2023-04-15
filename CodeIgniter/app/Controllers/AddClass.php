@@ -13,16 +13,16 @@ class AddClass extends BaseController {
 
     public function save() {
         $validation = $this->validate([
-            'ClassName' => 'required',
-            'ClassID' => 'required|min_length[1]|max_legngth[20]|is_unique[Class.ClassID]',
+            'cname' => 'required',
+            'classid' => 'required|min_length[1]|max_length[20]|is_unique[Class.ClassID]',
         ]);
 
         if (!$validation) {
             return view('insert/add_class', ['validation'=>$this->validator]);
         }
         else {
-            $classname = $this->request->getPost('ClassName');
-            $classid = $this->request->getPost('ClassID');
+            $classname = $this->request->getPost('cname');
+            $classid = $this->request->getPost('classid');
 
             $values = [
                 'ClassName' => $classname,
@@ -36,8 +36,7 @@ class AddClass extends BaseController {
                 return redirect()->back()->with('fail', 'An error has occurred.');
             }
             else {
-                $query->insertID();
-                return redirect()->to('/insert/add_class')->with('success', 'Class has successfully been added.');
+                return redirect()->back()->with('success', 'Class has successfully been added.');
             }
         }
     }

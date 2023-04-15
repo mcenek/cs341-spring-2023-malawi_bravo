@@ -25,7 +25,7 @@
                             <tr>
                                 <th>Class Name</th>
                                 <th>Class ID</th>
-                                <th>Edit</th>
+                                <th>View</th>
                             </tr>
                         <?php endif; ?>
                     </thead>
@@ -35,7 +35,7 @@
                             <tr>
                                 <td><?php echo $row['ClassName']; ?></td>
                                 <td><?php echo $row['ClassID']; ?></td>
-                                <td><button id="<?= $row['ClassID']?>">Edit</button></td>
+                                <td><button onclick="location.href='<?php echo base_url();?>search/results/<?php echo $row['ClassID']?>'">View</button></td>
                             </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
