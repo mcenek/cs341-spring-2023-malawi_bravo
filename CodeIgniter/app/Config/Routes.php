@@ -47,10 +47,15 @@ $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/assignStudents', 'AssignStudent::index');
     $routes->post('/assignClass/classSelected', 'AssignClass::index');
     $routes->post('/assignStudents/search', 'AssignStudent::search');
-    $routes->post('/search/results', 'GradeController::index');
+    $routes->post('/assignClass/classSelected/search', 'AssignClass::search');
+    $routes->get('/editGrades/result/(:num)', 'GradeController::index/$1');
+    $routes->get('/editGrades/result/edit/(:num)', 'GradeController::edit/$1');
+    $routes->post('editGrades/result/(:num)', 'GradeController::submit/$1');
+    $routes->post('/editGrades/search', 'SearchController::search');
+    $routes->get('auth/register', 'Auth::register');
 });
 $routes->group('', ['filter'=>'AlreadyLoggedIn'], function($routes){
-    $routes->get('auth/register', 'Auth::register');
+
     $routes->get('auth', 'Auth::index');
     $routes->get('/', 'Auth::index');
 });
@@ -58,7 +63,6 @@ $routes->get('auth/logout', 'Auth::logout');
 $routes->post('auth/check', 'Auth::check');
 $routes->post('auth/save', 'Auth::save');
 $routes->get('(:segment)', [Pages::class, 'view']);
-$routes->post('SearchController/search', 'SearchController::search');
 
 
 /*

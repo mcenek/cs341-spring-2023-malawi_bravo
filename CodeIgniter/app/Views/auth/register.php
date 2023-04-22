@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
                     </div>
-                    <a href="<?= base_url("auth") ?>">I already have an account, login now</a>
+                    <a href="<?= base_url("dashboard") ?>">Return to Dashboard</a>
                 </form>
             </div>
         </div>

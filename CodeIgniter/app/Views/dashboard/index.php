@@ -40,16 +40,22 @@
                         </a>
                     </div>
                     <div class="w-100 mb-2">
-                    <button type="button" class="btn btn-primary mb-2">Print Report Cards</button>
+                        <a href="<?= site_url('transcript'); ?>">
+                            <button type="button" class="btn btn-primary mb-2">Print Report Cards</button>
+                        </a>
                     </div>
                     <div class="w-100 mb-2">
                     <a href="<?= site_url('editGrades'); ?>">
                         <button type="button" class="btn btn-primary mb-2">Edit Grades</button>
                     </a>
                     </div>
-		    <div class="w-100 mb-2">
-		    <a href="<?=site_url('assignStudents'); ?>">
+                    <div class="w-100 mb-2">
+                        <a href="<?=site_url('assignStudents'); ?>">
                     <button type="button" class="btn btn-primary mb-2">Assign Students</button>
+                    </div>
+                    <div class="w-100 mb-2">
+                        <a href="<?=site_url('auth/register'); ?>">
+                    <button type="button" class="btn btn-primary mb-2">Add New Account</button>
                     </div>
                 </div>
                 <table>

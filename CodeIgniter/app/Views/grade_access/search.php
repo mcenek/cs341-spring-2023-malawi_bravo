@@ -10,9 +10,9 @@
         <div class="row justify-content-center" style="margin-top:45px">
             <div class="col-md-8">
                 <h4 class="text-center">EDIT GRADES</h4>
-                <form action="<?= base_url('SearchController/search')?>" method="post" autocomplete="off">
+                <form action="<?= base_url('editGrades/search')?>" method="post" autocomplete="off">
                     <div class="d-flex justify-content-center mb-3">
-                        <input type="text" id="query" name='query' class="form-control" placeholder="Search">
+                        <input type="text" id="query" name='query' class="form-control" placeholder="Search by Class Name">
                         </div>
                     </div>
                 </form>
@@ -35,13 +35,20 @@
                             <tr>
                                 <td><?php echo $row['ClassName']; ?></td>
                                 <td><?php echo $row['ClassID']; ?></td>
-                                <td><button onclick="location.href='<?php echo base_url();?>search/results/<?php echo $row['ClassID']?>'">View</button></td>
+                                <td><button onclick="location.href='<?php echo base_url();?>editGrades/result/<?php echo $row['ClassID']?>'">View</button></td>
                             </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
                 </table>
-            </div> 
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 text-center" style="margin-top: 30px;">
+                <a href="<?= base_url('dashboard') ?>">Return to dashboard</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+

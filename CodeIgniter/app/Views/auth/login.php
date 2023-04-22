@@ -31,8 +31,12 @@
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Sign In</button>
                     </div>
-                    <a href="<?= base_url("auth/register") ?>">Have no Account, create new account</a>
                 </form>
+                <div class="row">
+                    <div class="col-md-12 text-center" style="margin-top: 30px;">
+                        <a href="<?= base_url('phpmyadmin') ?>">Direct Database Access</a>
+                     </div>
+                </div>
             </div>
         </div>
     </div>

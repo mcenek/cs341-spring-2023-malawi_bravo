@@ -10,7 +10,7 @@ class Transcript extends BaseController
         //this will take the Name of a student as a parameter
         //then return the correspoonding student info to the data
         $studentModel = new \App\Models\StudentModel();
-        $studentId = 1;
+        $studentId = 1234;
         $userInfo = $studentModel->find($studentId);
 
         $classes = [

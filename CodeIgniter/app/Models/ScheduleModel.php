@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 class ScheduleModel extends Model {
     protected $table = 'Schedule';
     protected $useAutoIncrement = false;
-    protected $allowedFields = ['StudentID', 'ClassID'];
+    protected $allowedFields = ['StudentID', 'ClassID', 'Grade'];
 }
 
 ?> 
