@@ -20,7 +20,9 @@
                 </form>
             </div>
         </div>
-        <div class="row justify-content-center" style="margin-top:45px">
+        <form action="<?= base_url('/assignClass/classSelected/saveChanges')?>" method="post">
+            <input type="hidden" name='classID' value='<?=$classID?>'>
+            <div class="row justify-content-center" style="margin-top:45px">
                 <table id="results">
                     <thead>
                         <?php if($result): ?>
@@ -38,20 +40,19 @@
                                 <?php $bool = in_array($row['StudentID'], $checked) ? 'checked' : ''; ?>
                                 <td><?php echo "{$row['FirstName']} {$row['LastName']}"; ?></td>
                                 <td><?php echo $row['StudentID']; ?></td>
-                                <td><input type="checkbox" name="student" id="<?= $row['StudentID']?>" <?= $bool ?>></td>
-                                
-                                
+                                <td><input type="checkbox" name="student[]" value="<?= $row['StudentID']?>" <?= $bool ?>></td>
                             </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
                 </table>
-        </div>
-        <div class="row" style="margin-top: 30px;">
-            <div class="col-md-12 text-center">
-                <button class="btn btn-primary" type="submit">Save Changes to Roster</button>
             </div>
-        </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary" type="submit">Save Changes to Roster</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-md-12 text-center" style="margin-top: 30px;">
                 <a href="<?= base_url('dashboard') ?>">Return to dashboard</a>
@@ -60,4 +61,3 @@
     </div>
 </body>
 </html>
-

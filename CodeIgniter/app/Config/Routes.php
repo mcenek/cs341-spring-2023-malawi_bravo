@@ -51,6 +51,7 @@ $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/editGrades/result/(:num)', 'GradeController::index/$1');
     $routes->get('/editGrades/result/edit/(:num)', 'GradeController::edit/$1');
     $routes->post('editGrades/result/(:num)', 'GradeController::submit/$1');
+    $routes->post('/assignClass/classSelected/saveChanges', 'AssignClass::save');
     $routes->post('/editGrades/search', 'SearchController::search');
     $routes->get('auth/register', 'Auth::register');
 });

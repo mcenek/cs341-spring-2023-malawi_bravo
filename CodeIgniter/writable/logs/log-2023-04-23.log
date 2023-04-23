@@ -1,0 +1,10 @@
+CRITICAL - 2023-04-23 01:27:37 --> There is no primary key defined when trying to make insert.
+in SYSTEMPATH/Model.php on line 294.
+ 1 SYSTEMPATH/Model.php(294): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey()
+ 2 SYSTEMPATH/BaseModel.php(782): CodeIgniter\Model->doInsert()
+ 3 SYSTEMPATH/Model.php(730): CodeIgniter\BaseModel->insert()
+ 4 APPPATH/Controllers/AssignClass.php(66): CodeIgniter\Model->insert()
+ 5 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\AssignClass->save()
+ 6 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

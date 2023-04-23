@@ -45,32 +45,45 @@ class AssignClass extends BaseController {
 	}
 
 	public function save() {
-		$studentID = $this->request->getPost('addStudent');
-		$classID = $this->request->getPost('classID');
-
-		$values = [
-			'StudentID' => $studentID,
-			'ClassID' => $classID,
-		];
-
-		/*
-			- populate checkboxes with students already enrolled
-			- click on checkboxes to add new students
-			- click save and loop through list (if not in database, add them)
-			- success or error
-		*/
-
+		$studentIDs = $this->request->getPost('student') ?? [];
+		$classID = $this->request->getPost('classID') ?? [];
+	
 		$scheduleModel = new \App\Models\ScheduleModel();
-		$query = $scheduleModel->insert($values);
-
-		if (!$query) {
-			return redirect()->back()->with('fail', 'An error has occurred.');
+		$currentEnrolledStudents = $scheduleModel->where('ClassID', $classID)->findColumn('StudentID') ?? [];
+	
+		$studentsToAdd = array_diff($studentIDs, $currentEnrolledStudents);
+		$studentsToRemove = array_diff($currentEnrolledStudents, $studentIDs);
+	
+		$success = true;
+	
+		// Add new students to the class
+		foreach ($studentsToAdd as $studentID) {
+			$values = [
+				'StudentID' => $studentID,
+				'ClassID' => $classID,
+			];
+	
+			if (!$scheduleModel->insert($values)) {
+				$success = false;
+				break;
+			}
 		}
-		else {
-			//$builder->insert($values);
-			return redirect()->back()->with('success', 'Student(s) successfully been added to the class.');
+	
+		// Remove students from the class
+		if ($success) {
+			foreach ($studentsToRemove as $studentID) {
+				if (!$scheduleModel->where('StudentID', $studentID)->where('ClassID', $classID)->delete()) {
+					$success = false;
+					break;
+				}
+			}
 		}
+		//TODO: Display success or error message depending on outcome
+		if (!$success) {
+			return redirect()->to('/dashboard')->with('fail', 'An error has occurred.');
+		} else {
+			return redirect()->to('/dashboard')->with('success', 'Roster has been successfully updated.');
+		}
+		
 	}
 }
-
-
