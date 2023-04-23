@@ -4,38 +4,31 @@ namespace App\Controllers;
 
 class Transcript extends BaseController
 {
-    //$this->load->library('table');
     public function result()
     {
-        //this will take the Name of a student as a parameter
-        //then return the correspoonding student info to the data
         $studentModel = new \App\Models\StudentModel();
+        $scheduleModel = new \App\Models\ScheduleModel();
+        $classModel = new \App\Models\ClassModel();
+        
         $studentId = 1234;
-        $userInfo = $studentModel->find($studentId);
+        $student = $studentModel->find($studentId);
+        $studentName = "{$student['FirstName']} {$student['LastName']}";
 
-        $classes = [
-            ['Course' => 'Mathematics', 'Grade' => 98],
-            ['Course' => 'Biology', 'Grade' => 80],
-            ['Course' => 'Life Skills/Social Studies', 'Grade' => 90],
-            ['Course' => 'Bible Knowledge', 'Grade' => 98],
-            ['Course' => 'History', 'Grade' => 98],
-            ['Course' => 'Chemistry', 'Grade' => 98],
-            ['Course' => 'Chichewa', 'Grade' => 98],
-            ['Course' => 'English', 'Grade' => 98],
-            ['Course' => 'Computer Studies', 'Grade' => 98],
-            ['Course' => 'Geography', 'Grade' => 98],
-            ['Course' => 'Agriculture', 'Grade' => 98],
-            ['Course' => 'Physics', 'Grade' => 98],
-        ];
-        $name = $userInfo['FirstName'] . " " . $userInfo['LastName'];
+        // Fetch the classes the student is enrolled in
+        $enrolledClassIds = $scheduleModel->where('StudentID', $studentId)->findColumn('ClassID');
+        $enrolledClasses = $scheduleModel->select('Schedule.Grade, Class.ClassName')
+                                 ->join('Class', 'Class.ClassID = Schedule.ClassID')
+                                 ->whereIn('Schedule.ClassID', $enrolledClassIds)
+                                 ->where('Schedule.StudentID', $studentId)
+                                 ->findAll();
+
         $data = [
-            'studentName' => $name,
+            'studentName' => $studentName,
             'studentId' => $studentId,
-            'classStanding' => $userInfo['ClassStanding'],
-            'classes' => $classes
+            'classStanding' => $student['ClassStanding'],
+            'classes' => $enrolledClasses,
         ];
         
         return view('transcript/result', $data);
     }
-
 }

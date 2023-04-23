@@ -55,7 +55,7 @@
                             foreach ($classes as $row)
                             {
                                 ?><tr>
-                                <td><?php echo $row['Course'];?></td>
+                                <td><?php echo $row['ClassName'];?></td>
                                 <td><?php echo $row['Grade'];?></td>
                                 <td><?php echo getLetterGrade($row['Grade']);?></td>
                                 </tr>
