@@ -12,7 +12,7 @@
                 <h4 class="text-center"><?php echo $className ?> </h4>
             </div>
 	</div>
-	<form action="<?=base_url('GradeController/submit')?>" method="post">
+	<form action="<?=base_url('/editGrades/result/submit/'. $classId)?>" method="post">
 	<div class="row justify-content-center" style="margin-top:45px">
                 <table id="results">
                     <thead>
@@ -30,7 +30,7 @@
                             <tr>
                                 <td><?= $row['StudentID']; ?></td>
 				<td><?= $row['ClassID']; ?></td>
-				<td><input class="form-control" type="text" name="grade" placeholder="<?= $row['Grade']; ?>" value=""></td>
+				<td><input class="form-control" type="text" name="grade[]" placeholder="<?= $row['Grade']; ?>" value="<?= $row['Grade']; ?>"></td>
                             </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -39,9 +39,7 @@
             </div> 
             <div class="d-flex flex-column align-items-center mb-3">
                 <div class="w-100 mb-2">
-		    <a href="<?= site_url('/editGrades/result/submit/'. $classId); ?>">
-		    <button name=submit" value="<?= $classId?>" type="submit" class="btn btn-primary mb-2">Save Changes</button>
-                    </a>
+		            <button name="submit" value="<?= $classId?>" type="submit" class="btn btn-primary mb-2">Save Changes</button>
                 </div>
                 <div class="w-100 mb-2">
                     <a href="<?= site_url('/editGrades/result/'. $classId); ?>">

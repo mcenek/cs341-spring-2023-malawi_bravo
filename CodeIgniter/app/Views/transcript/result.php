@@ -32,7 +32,6 @@
                 <div class="table-container">
                     <h5>Student Name: <?= $studentName; ?></h5>
                     <h5>Student ID: <?= $studentId; ?></h5>
-                    <h5>Class Standing: <?= $classStanding; ?></h5>
 
                     <table id="gradeReport">
                         <thead>

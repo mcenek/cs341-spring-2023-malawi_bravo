@@ -38,8 +38,12 @@ $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->get('/dashboard', 'Dashboard::index');
     $routes->get('/editGrades', 'SearchController::index');
     $routes->get('/dashboard/profile', 'Dashboard::profile');
-    $routes->get('/transcript', 'Transcript::result');
-    $routes->get('/transcript/temp', 'Transcript::temp');
+
+    $routes->get('/transcript', 'Transcript::selectStudent');
+    $routes->post('/transcript/showTranscript', 'Transcript::showTranscript');
+    $routes->post('/transcript/search', 'Transcript::search');
+
+
     $routes->get('/addClass', 'AddClass::index');
     $routes->get('/addStudent', 'AddStudent::index');
     $routes->post('/addClass/add', 'AddClass::save');
@@ -50,7 +54,7 @@ $routes->group('', ['filter'=>'AuthCheck'], function($routes){
     $routes->post('/assignClass/classSelected/search', 'AssignClass::search');
     $routes->get('/editGrades/result/(:num)', 'GradeController::index/$1');
     $routes->get('/editGrades/result/edit/(:num)', 'GradeController::edit/$1');
-    $routes->post('editGrades/result/(:num)', 'GradeController::submit/$1');
+    $routes->post('/editGrades/result/submit/(:num)', 'GradeController::submit/$1');
     $routes->post('/assignClass/classSelected/saveChanges', 'AssignClass::save');
     $routes->post('/editGrades/search', 'SearchController::search');
     $routes->get('auth/register', 'Auth::register');
